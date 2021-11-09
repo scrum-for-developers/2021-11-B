@@ -10,10 +10,11 @@ import org.junit.jupiter.api.Test;
 class BookTest {
 
   Book BOOK;
+  Book BOOK2;
 
   @BeforeEach
   public void setup() {
-    BOOK = new Book("Titel", "Author", "2", "1", 1234);
+    BOOK = new Book("Titel", "Author", "2", "1", 1234, "description");
   }
 
   @Test
@@ -27,6 +28,19 @@ class BookTest {
             BOOK.getYearOfPublication());
     anotherCopy.setAuthor("Bene");
     assertThat(BOOK.isSameCopy(anotherCopy), is(false));
+  }
+
+  @Test
+  void shouldAllowBookWithDescription() {
+    Book anotherCopy =
+        new Book(
+            BOOK.getTitle(),
+            BOOK.getAuthor(),
+            BOOK.getEdition(),
+            BOOK.getIsbn(),
+            BOOK.getYearOfPublication(),
+            BOOK.getDescription());
+    assertThat(BOOK.isSameCopy(anotherCopy), is(true));
   }
 
   @Test
