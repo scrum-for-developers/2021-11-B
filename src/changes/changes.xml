@@ -24,5 +24,11 @@
 				Return all borrowed books by one member.
 			</action>
 		</release>
+		<release version="1.1" date="2021-11-09"
+		description="Release with much improved functionality">
+			<action dev="frank" type="update">
+				Updated maven versions
+			</action>
+		</release>
 	</body>
 </document>
