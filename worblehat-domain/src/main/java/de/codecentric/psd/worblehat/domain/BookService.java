@@ -23,4 +23,6 @@ public interface BookService {
   List<Book> findAllBooks();
 
   Set<Book> findBooksByIsbn(String isbn);
+
+  Set<Book> findBooksByTitle(String title);
 }

@@ -5,8 +5,17 @@
   <title>Show all Books</title>
 </head>
 <body>
+  <form th:object="${getBorrowedBookListFormData}" method="POST">
+    Email Address:<input id="emailAddress" type="text" th:field="*{emailAddress}"/>
+    <span id="email.error" th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}"></span>
+    <br/>
+    <input type="submit" id="getBorrowedBookList" value="Get all borrowed books"/>
+  
+  </form>
+
+
 <table class="borrowedList">
-  <caption>List of borrowed books for user ${borrowerEmailAddress}</caption>
+  <caption>List of borrowed books for user ${borrowerEmail}</caption>
   <thead>
   <tr>
     <th scope="col">ISBN</th>
@@ -14,7 +23,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr th:each="book : ${books}">
+  <tr th:each="book : ${borrowedList}">
     <th th:text="${book.isbn}" scope="row">123456</th>
     <td th:text="${book.title}">Harry Potter</td>
   </tr>

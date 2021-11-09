@@ -7,10 +7,11 @@
 <h1 id="welcome_heading"><span th:text="${@environment.getProperty('spring.application.name')}"></span></h1>
 
 <ul>
-  <li><a th:href="@{/bookList}">Show all Books</a></li>
+  <li><a th:href="@{/bookList}">Show all books</a></li>
   <li><a th:href="@{/insertBooks}">Add a new book</a></li>
-  <li><a th:href="@{/borrow}">Borrow Book</a></li>
-  <li><a th:href="@{/returnAllBooks}">Return all Books</a></li>
+  <li><a th:href="@{/borrow}">Borrow book</a></li>
+  <li><a th:href="@{/returnAllBooks}">Return all books</a></li>
+  <li><a th:href="@{/borrowedBookList}">List of borrowed books for user</a></li>
 </ul>
 <footer>
   <div th:replace="fragments/footer :: copyright"/>
