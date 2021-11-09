@@ -47,7 +47,8 @@ public class Library {
                   book.getAuthor(),
                   book.getEdition(),
                   isbn,
-                  book.getYearOfPublication())
+                  book.getYearOfPublication(),
+                  book.getDescription())
               .orElseThrow(IllegalStateException::new);
         });
   }
@@ -64,7 +65,8 @@ public class Library {
                   book.getAuthor(),
                   book.getEdition(),
                   isbn,
-                  book.getYearOfPublication())
+                  book.getYearOfPublication(),
+                  book.getDescription())
               .orElseThrow(IllegalStateException::new);
 
           bookService.borrowBook(book.getIsbn(), borrower);

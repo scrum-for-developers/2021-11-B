@@ -17,7 +17,7 @@ public class Book implements Serializable {
   private String title;
   private String author;
   private String edition;
-  private String description;
+  private String description = "";
 
   private String isbn;
   private int yearOfPublication;
@@ -28,36 +28,6 @@ public class Book implements Serializable {
   /** Empty constructor needed by Hibernate. */
   private Book() {
     super();
-  }
-
-  /**
-   * Creates a new book instance.
-   *
-   * @param title the title
-   * @param author the author
-   * @param edition the edition
-   * @param isbn the isbn
-   * @param yearOfPublication the yearOfPublication
-   */
-  public Book(
-      @Nonnull String title,
-      @Nonnull String author,
-      @Nonnull String edition,
-      @Nonnull String isbn,
-      int yearOfPublication) {
-    /*
-     * === HINT ===
-     * If you consider to add another parameter to this constructor, think about the consequences first.
-     * Where's this constructor used? Do you really want to change the code in all those places?
-     * Alternative ideas: just use a setter if it's a non-mandatory attribute or provide an alternative constructor.
-     * You might also consider to implement a builder pattern.
-     */
-    super();
-    this.title = title;
-    this.author = author;
-    this.edition = edition;
-    this.isbn = isbn;
-    this.yearOfPublication = yearOfPublication;
   }
 
   /**

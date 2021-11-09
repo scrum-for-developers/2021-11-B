@@ -15,7 +15,7 @@ public class BookDataFormData {
   @Numeric(message = "{notvalid.bookDataFormData.edition}")
   private String edition;
 
-  private String description;
+  private String description = "";
 
   @NotEmpty(message = "{empty.bookDataFormData.yearOfPublication}")
   @Numeric(message = "{notvalid.bookDataFormData.yearOfPublication}")
