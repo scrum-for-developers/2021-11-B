@@ -15,6 +15,7 @@ class BookTest {
   @BeforeEach
   public void setup() {
     BOOK = new Book("Titel", "Author", "2", "1", 1234, "description");
+    BOOK2 = new Book("Titel", "Author", "2", "1", 1234);
   }
 
   @Test
@@ -42,6 +43,18 @@ class BookTest {
             BOOK.getYearOfPublication(),
             BOOK.getDescription());
     assertThat(BOOK.isSameCopy(anotherCopy), is(true));
+  }
+
+  @Test
+  void shouldAllowBookWithoutDescription() {
+    Book anotherCopy =
+      new Book(
+        BOOK2.getTitle(),
+        BOOK2.getAuthor(),
+        BOOK2.getEdition(),
+        BOOK2.getIsbn(),
+        BOOK2.getYearOfPublication());
+    assertThat(BOOK2.isSameCopy(anotherCopy), is(true));
   }
 
   @Test
@@ -95,5 +108,6 @@ class BookTest {
     assertThat(borrowingAsString, containsString("edition"));
     assertThat(borrowingAsString, containsString("isbn"));
     assertThat(borrowingAsString, containsString("yearOfPublication"));
+    assertThat(borrowingAsString, containsString("description"));
   }
 }
