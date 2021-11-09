@@ -63,6 +63,28 @@ public class Book implements Serializable {
     this.description = description;
   }
 
+  public Book(
+      @Nonnull String title,
+      @Nonnull String author,
+      @Nonnull String edition,
+      @Nonnull String isbn,
+      int yearOfPublication) {
+    /*
+     * === HINT ===
+     * If you consider to add another parameter to this constructor, think about the consequences first.
+     * Where's this constructor used? Do you really want to change the code in all those places?
+     * Alternative ideas: just use a setter if it's a non-mandatory attribute or provide an alternative constructor.
+     * You might also consider to implement a builder pattern.
+     */
+    super();
+    this.title = title;
+    this.author = author;
+    this.edition = edition;
+    this.isbn = isbn;
+    this.yearOfPublication = yearOfPublication;
+    this.description = "";
+  }
+
   public String getTitle() {
     return title;
   }
