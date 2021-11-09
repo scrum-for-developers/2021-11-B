@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Show all Books</title>
+</head>
+<body>
+<table class="borrowedList">
+  <caption>List of borrowed books for user ${borrowerEmailAddress}</caption>
+  <thead>
+  <tr>
+    <th scope="col">ISBN</th>
+    <th scope="col">Title</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="book : ${books}">
+    <th th:text="${book.isbn}" scope="row">123456</th>
+    <td th:text="${book.title}">Harry Potter</td>
+  </tr>
+  </tbody>
+</table>
+
+<div th:replace="fragments/footer :: subpage-footer">Footer</div>
+
+</body>
+</html>
