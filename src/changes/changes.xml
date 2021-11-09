@@ -11,6 +11,7 @@
 				Adding new books.
 			</action>
 		</release>
+		
 		<release version="0.9" date="2011-04-06"
 			description="Second Release with much improved functionality">
 			<action dev="betaworblers" type="update">
@@ -24,10 +25,18 @@
 				Return all borrowed books by one member.
 			</action>
 		</release>
+
 		<release version="1.1" date="2021-11-09"
-		description="Release with much improved functionality">
+		description="Release after 10 years!">
 			<action dev="frank" type="update">
-				Updated maven versions
+				Updated maven versions.
+				Improved error messages.
+			</action>
+		</release>
+		<release version="1.2" date="2021-11-09"
+		description="More details for books">
+			<action dev="pikachu" type="update">
+				Added description field to books, which is also shown in list view.
 			</action>
 		</release>
 	</body>

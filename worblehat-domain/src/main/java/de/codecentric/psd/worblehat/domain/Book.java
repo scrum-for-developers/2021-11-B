@@ -17,6 +17,7 @@ public class Book implements Serializable {
   private String title;
   private String author;
   private String edition;
+  private String description;
 
   private String isbn;
   private int yearOfPublication;
@@ -71,6 +72,10 @@ public class Book implements Serializable {
     return edition;
   }
 
+  public String getDescription() {
+    return description;
+  }
+
   public String getIsbn() {
     return isbn;
   }
@@ -89,6 +94,10 @@ public class Book implements Serializable {
 
   public void setEdition(String edition) {
     this.edition = edition;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   public void setIsbn(String isbn) {
@@ -124,6 +133,9 @@ public class Book implements Serializable {
         + '\''
         + ", edition='"
         + edition
+        + '\''
+        + ", description='"
+        + description
         + '\''
         + ", isbn='"
         + isbn
