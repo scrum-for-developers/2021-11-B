@@ -30,7 +30,12 @@ public class BorrowedBookListController {
         new Comparator<Book>() {
           @Override
           public int compare(final Book object1, final Book object2) {
-            return object1.getTitle().compareTo(object2.getTitle());
+            int c = 0;
+            c = object1.getTitle().compareTo(object2.getTitle());
+            if (c==0) {
+              c = object1.getIsbn().compareTo(object2.getIsbn());
+            }
+            return c;
           }
         });
     modelMap.addAttribute("borrowedList", borrowedBooks);
