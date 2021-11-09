@@ -8,7 +8,12 @@ import java.util.Set;
 public interface BookService {
 
   Optional<Book> createBook(
-      String title, String author, String edition, String isbn, int yearOfPublication);
+      String title,
+      String author,
+      String edition,
+      String isbn,
+      int yearOfPublication,
+      String description);
 
   Book updateBook(Book aBook);
 

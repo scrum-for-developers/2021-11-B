@@ -46,7 +46,8 @@ public class InsertBookController {
               bookDataFormData.getAuthor(),
               bookDataFormData.getEdition(),
               bookDataFormData.getIsbn(),
-              Integer.parseInt(bookDataFormData.getYearOfPublication()));
+              Integer.parseInt(bookDataFormData.getYearOfPublication()),
+              bookDataFormData.getDescription());
       if (book.isPresent()) {
         Book newBook = book.get();
         // === HINT ===

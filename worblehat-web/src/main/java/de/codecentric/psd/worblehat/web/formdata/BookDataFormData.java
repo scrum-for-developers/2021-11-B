@@ -15,6 +15,8 @@ public class BookDataFormData {
   @Numeric(message = "{notvalid.bookDataFormData.edition}")
   private String edition;
 
+  private String description = "";
+
   @NotEmpty(message = "{empty.bookDataFormData.yearOfPublication}")
   @Numeric(message = "{notvalid.bookDataFormData.yearOfPublication}")
   @Min(message = "{invalid.length.bookDataFormData.yearOfPublication}", value = 1000)
@@ -67,6 +69,14 @@ public class BookDataFormData {
     this.edition = edition;
   }
 
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
   @Override
   public String toString() {
     return "BookDataFormData [title="
@@ -79,6 +89,8 @@ public class BookDataFormData {
         + isbn
         + ", author="
         + author
+        + ", description="
+        + description
         + "]";
   }
 }
