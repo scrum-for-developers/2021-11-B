@@ -47,20 +47,18 @@ public class Book implements Serializable {
       @Nonnull String isbn,
       int yearOfPublication,
       String description) {
-    /*
-     * === HINT ===
-     * If you consider to add another parameter to this constructor, think about the consequences first.
-     * Where's this constructor used? Do you really want to change the code in all those places?
-     * Alternative ideas: just use a setter if it's a non-mandatory attribute or provide an alternative constructor.
-     * You might also consider to implement a builder pattern.
-     */
+
     super();
-    this.title = title;
-    this.author = author;
-    this.edition = edition;
-    this.isbn = isbn;
+    this.title = title.trim();
+    this.author = author.trim();
+    this.edition = edition.trim();
+    this.isbn = isbn.trim();
     this.yearOfPublication = yearOfPublication;
-    this.description = description;
+    if (description.length() > 2000) {
+      this.description = description.trim().substring(0, 2000);
+    } else {
+      this.description = description.trim();
+    }
   }
 
   public Book(
@@ -69,20 +67,7 @@ public class Book implements Serializable {
       @Nonnull String edition,
       @Nonnull String isbn,
       int yearOfPublication) {
-    /*
-     * === HINT ===
-     * If you consider to add another parameter to this constructor, think about the consequences first.
-     * Where's this constructor used? Do you really want to change the code in all those places?
-     * Alternative ideas: just use a setter if it's a non-mandatory attribute or provide an alternative constructor.
-     * You might also consider to implement a builder pattern.
-     */
-    super();
-    this.title = title;
-    this.author = author;
-    this.edition = edition;
-    this.isbn = isbn;
-    this.yearOfPublication = yearOfPublication;
-    this.description = "";
+    this(title, author, edition, isbn, yearOfPublication, "");
   }
 
   public String getTitle() {
