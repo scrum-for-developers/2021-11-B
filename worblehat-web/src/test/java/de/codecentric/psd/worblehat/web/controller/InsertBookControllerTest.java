@@ -29,6 +29,10 @@ class InsertBookControllerTest {
 
   private static final Book TEST_BOOK = new Book("title", "author", "edition", "isbn", 2016, "");
 
+  private static final String ISBN10 = "3866400012";
+  private static final String ISBN13 = "9783866400016";
+  private static final String INVALID_ISBN = "123456";
+
   @BeforeEach
   public void setUp() {
     bookService = mock(BookService.class);
@@ -68,6 +72,48 @@ class InsertBookControllerTest {
   }
 
   @Test
+  void shouldCreateBookWithValid10CharISBNAndNavigateToBookList() {
+    setupFormData();
+    bookDataFormData.setIsbn(ISBN10);
+    when(bookService.createBook(any(), any(), any(), any(), anyInt(), any()))
+        .thenReturn(Optional.of(TEST_BOOK));
+
+    String navigateTo = insertBookController.processSubmit(bookDataFormData, bindingResult);
+
+    verifyBookIsCreatedWithValid10CharISBN();
+    assertThat(navigateTo, is("redirect:bookList"));
+  }
+
+  @Test
+  void shouldCreateBookWithValid13CharISBNAndNavigateToBookList() {
+    setupFormData();
+    bookDataFormData.setIsbn(ISBN13);
+    when(bookService.createBook(any(), any(), any(), any(), anyInt(), any()))
+        .thenReturn(Optional.of(TEST_BOOK));
+
+    String navigateTo = insertBookController.processSubmit(bookDataFormData, bindingResult);
+
+    verifyBookIsCreatedWithValid13CharISBN();
+    assertThat(navigateTo, is("redirect:bookList"));
+  }
+
+  @Test
+  void shouldFailToCreateBookDueToInvalidISBN() {
+    setupFormData();
+    bookDataFormData.setIsbn(INVALID_ISBN);
+    when(bookService.createBook(any(), any(), any(), any(), anyInt(), any()))
+        .thenReturn(Optional.empty());
+
+    String navigateTo = insertBookController.processSubmit(bookDataFormData, bindingResult);
+
+    verifyBookIsCreatedWithInvalidISBN();
+    assertThat(
+        bindingResult.getGlobalErrors(),
+        hasItem(hasProperty("codes", hasItemInArray("duplicateIsbn"))));
+    assertThat(navigateTo, is("insertBooks"));
+  }
+
+  @Test
   void shouldStayOnInsertBookPageWhenCreatingBookFails() {
     setupFormData();
     when(bookService.createBook(any(), any(), any(), any(), anyInt(), any()))
@@ -89,6 +135,39 @@ class InsertBookControllerTest {
             TEST_BOOK.getAuthor(),
             TEST_BOOK.getEdition(),
             TEST_BOOK.getIsbn(),
+            TEST_BOOK.getYearOfPublication(),
+            TEST_BOOK.getDescription());
+  }
+
+  private void verifyBookIsCreatedWithValid10CharISBN() {
+    verify(bookService)
+        .createBook(
+            TEST_BOOK.getTitle(),
+            TEST_BOOK.getAuthor(),
+            TEST_BOOK.getEdition(),
+            ISBN10,
+            TEST_BOOK.getYearOfPublication(),
+            TEST_BOOK.getDescription());
+  }
+
+  private void verifyBookIsCreatedWithValid13CharISBN() {
+    verify(bookService)
+        .createBook(
+            TEST_BOOK.getTitle(),
+            TEST_BOOK.getAuthor(),
+            TEST_BOOK.getEdition(),
+            ISBN13,
+            TEST_BOOK.getYearOfPublication(),
+            TEST_BOOK.getDescription());
+  }
+
+  private void verifyBookIsCreatedWithInvalidISBN() {
+    verify(bookService)
+        .createBook(
+            TEST_BOOK.getTitle(),
+            TEST_BOOK.getAuthor(),
+            TEST_BOOK.getEdition(),
+            INVALID_ISBN,
             TEST_BOOK.getYearOfPublication(),
             TEST_BOOK.getDescription());
   }

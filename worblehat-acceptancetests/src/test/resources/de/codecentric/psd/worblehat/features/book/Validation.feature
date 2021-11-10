@@ -11,7 +11,8 @@ Feature: Testing for basic validation when adding new books
 
     Examples:
 
-      | isbn       | author          | title    | edition | year | field   |
-      | 0XXXXXXXX5 | Terry Pratchett | Sourcery | 1       | 1989 | isbn    |
-      | 0552131075 | Terry Pratchett | Sourcery | 1       |    1 | year    |
+      | isbn          | author          | title    | edition | year | field   |
+      | 0XXXXXXXX5    | Terry Pratchett | Sourcery | 1       | 1989 | isbn    |
+      | 0552131075    | Terry Pratchett | Sourcery | 1       |    1 | year    |
+      | 9783866400017 | Terry Pratchett | Sourcery | 1       |    1 | year    |
 
