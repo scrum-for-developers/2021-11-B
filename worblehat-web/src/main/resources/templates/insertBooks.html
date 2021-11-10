@@ -23,7 +23,7 @@
   Edition:<input type="text" th:field="*{edition}"/>
   <span id="edition.error" class="error" th:if="${#fields.hasErrors('edition')}" th:errors="*{edition}"></span>
   <br/>
-  Description:<textarea type="text" th:field="*{description}" rows="4" cols="50" maxlength="2000">
+  Description:<textarea type="text" th:field="*{description}" rows="4" cols="50" maxlength="2000"/>
   <!--<span id="description.error" class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>-->
   <br/>
   <input type="submit" id="addBook" value="Add Book"/>
