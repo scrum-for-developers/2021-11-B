@@ -45,6 +45,7 @@
 		description="More details for books">
 			<action dev="pikachu" type="update">
 				Added cleaning of input fields for book creation (whitespace timming & 2000 character limit for description)
+				Imlements version number on landing page of web applicatio
 			</action>
 		</release>
 	</body>
