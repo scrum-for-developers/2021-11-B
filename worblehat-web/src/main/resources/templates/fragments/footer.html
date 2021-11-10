@@ -10,10 +10,8 @@
   <a th:href="@{/}">Back to Home</a>
 </footer>
 
-<div th:fragment="version">Version: …</div>
-
 <div th:fragment="copyright">&copy; 2011-<span th:text="${#dates.format(#dates.createNow(), 'yyyy')}"/> <a
   href="https://www.codecentric.de">codecentric AG</a></div>
-
+<div th:fragment="version">Version: <span th:text="${@environment.getProperty('info.version')}"></span></div>
 </body>
 </html>
