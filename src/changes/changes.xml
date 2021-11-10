@@ -47,6 +47,7 @@
 				Added cleaning of input fields for book creation (whitespace timming & 2000 character limit for description)
 				Displays version number on landing page of web app
 				Allowing of ISBN13 in ISBN field
+				Validation messages have been updated to reflect the changes to ISBN number sizes
 			</action>
 		</release>
 	</body>
