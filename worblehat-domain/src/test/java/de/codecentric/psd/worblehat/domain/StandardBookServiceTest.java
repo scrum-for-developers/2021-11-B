@@ -28,9 +28,20 @@ class StandardBookServiceTest {
 
   private static final LocalDate NOW = LocalDate.now();
 
-  private Book aBook, aCopyofBook, anotherBook;
+  private static final String VALID_2K_CHARACTER_STRING =
+      "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";
+  private static final String INVALID_3K_CHARACTER_STRING =
+      "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";
+
+  private Book aBook, aCopyofBook, whitespaceBook;
   private Book aBorrowedBook, aCopyofBorrowedBook, anotherBorrowedBook;
   private Borrowing aBorrowing, aBorrowingOfCopy, anotherBorrowing;
+
+  private static final String TITLE = "title";
+  private static final String AUTHOR = "author";
+  private static final String EDITION = "edition";
+  private static final String ISBN = "title";
+  private static final String DESCRIPTION = "title";
 
   @BeforeEach
   void setup() {
@@ -38,7 +49,14 @@ class StandardBookServiceTest {
 
     aBook = new Book("title", "author", "edition", "isbn", 2016, "description");
     aCopyofBook = new Book("title", "author", "edition", "isbn", 2016, "description");
-    anotherBook = new Book("title2", "author2", "edition2", "isbn2", 2016, "description");
+    whitespaceBook =
+        new Book(
+            "    " + TITLE + "    ",
+            "      " + AUTHOR + "      ",
+            "      " + EDITION + "      ",
+            "      " + ISBN + "      ",
+            2016,
+            "      " + DESCRIPTION + "      ");
 
     aBorrowedBook = new Book("title", "author", "edition", "isbn", 2016, "description");
     aBorrowing = new Borrowing(aBorrowedBook, BORROWER_EMAIL, NOW);
@@ -151,6 +169,81 @@ class StandardBookServiceTest {
     assertThat(bookArgumentCaptor.getValue().getIsbn(), is(aBook.getIsbn()));
     assertThat(
         bookArgumentCaptor.getValue().getYearOfPublication(), is(aBook.getYearOfPublication()));
+  }
+
+  @Test
+  void shouldCreateBookWithoutWhitespace() {
+    when(bookRepository.save(any(Book.class))).thenReturn(aBook);
+    bookService.createBook(
+        whitespaceBook.getTitle(),
+        whitespaceBook.getAuthor(),
+        whitespaceBook.getEdition(),
+        whitespaceBook.getIsbn(),
+        whitespaceBook.getYearOfPublication(),
+        whitespaceBook.getDescription());
+
+    // assert that book was saved to repository
+    ArgumentCaptor<Book> bookArgumentCaptor = ArgumentCaptor.forClass(Book.class);
+    verify(bookRepository).save(bookArgumentCaptor.capture());
+
+    // assert that the information was passed correctly to create the book
+    assertThat(bookArgumentCaptor.getValue().getTitle(), is(TITLE));
+    assertThat(bookArgumentCaptor.getValue().getAuthor(), is(AUTHOR));
+    assertThat(bookArgumentCaptor.getValue().getEdition(), is(EDITION));
+    assertThat(bookArgumentCaptor.getValue().getIsbn(), is(ISBN));
+    assertThat(
+        bookArgumentCaptor.getValue().getYearOfPublication(), is(aBook.getYearOfPublication()));
+    assertThat(bookArgumentCaptor.getValue().getDescription(), is(DESCRIPTION));
+  }
+
+  @Test
+  void shouldCreateBookWithLimitedNumberOfCharacters() {
+    when(bookRepository.save(any(Book.class))).thenReturn(aBook);
+    bookService.createBook(
+        aBook.getTitle(),
+        aBook.getAuthor(),
+        aBook.getEdition(),
+        aBook.getIsbn(),
+        aBook.getYearOfPublication(),
+        VALID_2K_CHARACTER_STRING + "das sollte keiner sehen");
+
+    // assert that book was saved to repository
+    ArgumentCaptor<Book> bookArgumentCaptor = ArgumentCaptor.forClass(Book.class);
+    verify(bookRepository).save(bookArgumentCaptor.capture());
+
+    // assert that the information was passed correctly to create the book
+    assertThat(bookArgumentCaptor.getValue().getTitle(), is(aBook.getTitle()));
+    assertThat(bookArgumentCaptor.getValue().getAuthor(), is(aBook.getAuthor()));
+    assertThat(bookArgumentCaptor.getValue().getEdition(), is(aBook.getEdition()));
+    assertThat(bookArgumentCaptor.getValue().getIsbn(), is(aBook.getIsbn()));
+    assertThat(
+        bookArgumentCaptor.getValue().getYearOfPublication(), is(aBook.getYearOfPublication()));
+    assertThat(bookArgumentCaptor.getValue().getDescription(), is(VALID_2K_CHARACTER_STRING));
+  }
+
+  @Test
+  void shouldCreateBookWithExactly2KCharacters() {
+    when(bookRepository.save(any(Book.class))).thenReturn(aBook);
+    bookService.createBook(
+        aBook.getTitle(),
+        aBook.getAuthor(),
+        aBook.getEdition(),
+        aBook.getIsbn(),
+        aBook.getYearOfPublication(),
+        VALID_2K_CHARACTER_STRING);
+
+    // assert that book was saved to repository
+    ArgumentCaptor<Book> bookArgumentCaptor = ArgumentCaptor.forClass(Book.class);
+    verify(bookRepository).save(bookArgumentCaptor.capture());
+
+    // assert that the information was passed correctly to create the book
+    assertThat(bookArgumentCaptor.getValue().getTitle(), is(aBook.getTitle()));
+    assertThat(bookArgumentCaptor.getValue().getAuthor(), is(aBook.getAuthor()));
+    assertThat(bookArgumentCaptor.getValue().getEdition(), is(aBook.getEdition()));
+    assertThat(bookArgumentCaptor.getValue().getIsbn(), is(aBook.getIsbn()));
+    assertThat(
+        bookArgumentCaptor.getValue().getYearOfPublication(), is(aBook.getYearOfPublication()));
+    assertThat(bookArgumentCaptor.getValue().getDescription(), is(VALID_2K_CHARACTER_STRING));
   }
 
   @Test
