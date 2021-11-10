@@ -40,7 +40,7 @@
 				Added description field to books, which is also shown in list view.
 			</action>
 		</release>
-		
+
 		<release version="1.3" date="2021-11-10"
 		description="More details for books">
 			<action dev="pikachu" type="update">
